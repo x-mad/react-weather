@@ -1,0 +1,288 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.main-wrap {
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: lightgray;
+  display: flex;
+  padding-bottom: 50px;
+}
+.bg-white {
+  background-color: white;
+  margin-bottom:10px
+}
+.main {
+  height: calc(100vh - 50px);
+  width: 100%;
+}
+.main .current {
+  padding-top: 40px;
+  padding-left: 20px;
+  font-weight: 100;
+  color: #fff;
+}
+.main .current .degrees{
+  font-size: 80px;
+}
+
+.main .current .city,
+.main .current .description {
+  display: inline-block;
+  font-size: 16px;
+}
+.main .current .city {
+  border-right: 1px solid #fff;
+  padding-right: 10px;
+}
+.main .current .description {
+  padding-left: 10px;
+}
+
+.current {
+  height:55%;
+  background-color: #3bd5d0;
+  box-sizing: border-box;
+}
+.short-forecast-wrap {
+  height: 45%;
+  display: flex;
+  flex-direction: column;
+  color: #555;
+}
+.short-forecast {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-bottom: 1px solid lightgray;
+}
+
+.short-forecast-day .phrase {
+  font-size: 14px;
+}
+.short-forecast-day .temperature {
+  display: inline-block;
+  font-size: 25px;
+  margin-right: 15px;
+}
+
+.short-forecast-day .temperature .separator {
+  margin:4px;
+}
+
+.short-forecast-wrap .full-forecast-link {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.short-forecast-day {
+  display: flex;
+  flex: 1;
+}
+.short-forecast-day .icon {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+}
+.short-forecast-day .day-name {
+  font-weight: bold;
+}
+.short-forecast-day .description {
+  border-bottom: 1px solid lightgray;
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.short-forecast-day.last .description {
+  border-bottom:none;
+}
+
+.period-forecast {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.period-forecast .header {
+  text-align: center;
+  margin:35px auto;
+}
+
+.period-forecast .header .name{
+  font-size: 27px;
+  margin-bottom:  5px;
+}
+
+.period-forecast .table-wrap {
+  height:65%;
+  /*display: flex;*/
+  overflow-x: auto;
+}
+
+.period-forecast .table {
+  display: flex;
+}
+.period-forecast .close-wrap {
+  align-items: center;
+  margin: 20px auto;
+}
+.period-forecast .temperature {
+  display: none;
+}
+
+.period-forecast .close-wrap .close {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  vertical-align: middle;
+  text-align: center;
+  border: 1px solid lightgray;
+  padding: 5px;
+}
+.period-forecast .column {
+  text-align: center;
+  min-width:100px;
+  flex: 1 0;
+  font-size: 13px;
+}
+
+.period-forecast .night,
+.period-forecast .day {
+  padding: 10px 0;
+}
+
+.period-forecast .table-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.period-forecast .chart {
+  height: 100px;
+}
+.period-forecast .phrase {
+  height: 40px;
+  overflow: hidden;
+  padding: 0 5px;
+}
+
+.period-forecast .column:not(.first) .column-border {
+  border-left: 1px solid lightgray;
+}
+
+.period-forecast .wind{
+  border-bottom: 1px solid lightgray;
+  padding:10px 0;
+}
+
+.period-forecast .date {
+  padding: 10px 0;
+  border-bottom: 1px solid lightgray;
+}
+.settings-bar {
+  position: fixed;
+  bottom:0;
+  height:50px;
+  width:100%;
+  background-color: #FFF;
+  border-top:1px solid lightgray;
+}
+
+.settings-bar .settings-btn {
+  position: relative;
+  float: right;
+  margin-top:5px;
+}
+
+.block-title {
+  /*width:100%;*/
+  height:50px;
+  padding-left: 15px;
+  border-bottom:1px solid lightgray;
+  line-height:50px;
+}
+
+.details table,
+.details td {
+  border: 1px solid lightgray;
+  border-collapse: collapse;
+  border-top:none;
+}
+
+.details td{
+  padding:15px 20px 15px;
+  width:50%;
+}
+
+.details td .title{
+  color: #777;
+  text-transform: uppercase;
+}
+.details td .text {
+  display: inline-block;
+  font-size: 15px;
+  float: left;
+}
+
+.details td .icon {
+  float: right;
+}
+
+.hourly-forecast .chart-wrap {
+  overflow-x: auto;
+}
+.hourly-forecast .chart {
+  min-width: 600px;
+  height: 250px;
+}
+.top-cities {
+  background-color: #f4f5f6;
+  height:100%;
+}
+.top-cities .list {
+  padding: 10px;
+}
+.top-cities .list .title {
+  margin: 10px 5px;
+}
+.top-cities .list .city {
+  font-size: 12px;
+  display: inline-block;
+  border: 1px solid lightgray;
+  padding: 5px 10px;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  border-radius: 3px;
+  margin: 5px;
+  background-color: #fff;
+}
+.search {
+  background-color: #579dd9;
+  padding: 20px 10px 7px;
+  position: relative;
+}
+.search input {
+  box-sizing: border-box;
+  border:none;
+  border-radius: 2px;
+  width:100%;
+  padding:10px 10px 10px 30px;
+  font-family: 'Roboto';
+}
+.search .inner{
+  position: relative;
+}
+.search .back-button{
+  position: absolute;
+  padding: 9px 5px;
+}
