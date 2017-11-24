@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import ShortForecast from './short_forecast';
 import { roundTemperature } from '../helpers';
-import { fetchCurrentForecast, fetch5DaysForecast, fetchHourlyForecast } from '../actions'
+// import { fetchCurrentForecast, fetch5DaysForecast, fetchHourlyForecast } from '../actions'
 import { connect } from 'react-redux';
 import SettingsBar from './settings_bar';
 import Details from './details';
 import HourlyForecast from './hourly_forecast';
+
 
 class Main extends Component {
   render() {
@@ -33,18 +34,18 @@ class Main extends Component {
     )
   }
 
-  componentDidMount () {
-    const {currentForecast, currentCity} = this.props;
-    const cityId = currentCity.Key;
-
-    this.props.fetchCurrentForecast(cityId);
-    this.props.fetch5DaysForecast(cityId);
-    this.props.fetchHourlyForecast(cityId);
-  }
+  // componentDidMount () {
+  //   const {currentForecast, currentCity} = this.props;
+  //   const cityId = currentCity.Key;
+  //
+  //   this.props.fetchCurrentForecast(cityId);
+  //   this.props.fetch5DaysForecast(cityId);
+  //   this.props.fetchHourlyForecast(cityId);
+  // }
 }
 
 function mapStateToProps({currentForecast, currentCity}){
   return {currentForecast, currentCity};
 }
 
-export default connect(mapStateToProps, { fetchCurrentForecast, fetch5DaysForecast, fetchHourlyForecast })(Main);
+export default connect(mapStateToProps)(Main);

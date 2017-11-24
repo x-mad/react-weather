@@ -11,17 +11,14 @@ import reducers from './reducers';
 import Main from './components/main';
 import PeriodForecast from './components/period_forecast';
 import CitiesList from './components/cities_list';
+import Wrapper from './components/wrapper';
 
 const createStoreWithMiddleware = applyMiddleware(promise, mapData)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <BrowserRouter>
-        <Switch>
-          <Route path="/period_forecast/:cityId" component={PeriodForecast}/>
-          <Route path="/cities_list" component={CitiesList}/>
-          <Route path="/" component={Main}/>
-        </Switch>
-    </BrowserRouter>
+    <Wrapper>
+
+    </Wrapper>
   </Provider>
   , document.getElementById('root'));
