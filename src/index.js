@@ -5,20 +5,19 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware} from 'redux';
 import promise from 'redux-promise';
 import mapData from './middlewares/map_data';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import thunk from 'redux-thunk';
+// import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import reducers from './reducers';
-import Main from './components/main';
-import PeriodForecast from './components/period_forecast';
-import CitiesList from './components/cities_list';
+// import Main from './components/main';
+// import PeriodForecast from './components/period_forecast';
+// import CitiesList from './components/cities_list';
 import Wrapper from './components/wrapper';
 
-const createStoreWithMiddleware = applyMiddleware(promise, mapData)(createStore);
+const createStoreWithMiddleware = applyMiddleware(thunk, promise, mapData)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <Wrapper>
-
-    </Wrapper>
+    <Wrapper/>
   </Provider>
   , document.getElementById('root'));
