@@ -7,6 +7,9 @@ export const FETCH_TOP_CITIES = 'fetch_popular_cities';
 // export const FETCH_CITY = 'fetch_city';
 export const SET_CURRENT_CITY = 'set_current_city';
 export const FETCH_ALL_DATA = 'fetch_all_data';
+export const FETCH_ALL_DATA_BEGIN = 'fetch_all_data_begin';
+export const FETCH_ALL_DATA_SUCCESS = 'fetch_all_data_success';
+export const FETCH_ALL_DATA_ERROR = 'fetch_all_data_error';
 
 const ROOT_URL = 'http://dataservice.accuweather.com';
 const API_KEY = 'apikey=engGAPA64fX30ZJpmBAEgymHdKNUhnYs';
@@ -15,13 +18,21 @@ const DETAILS = 'details=true';
 
 export function fetchAllData(cityId) {
   return dispatch => {
-    return Promise.all([
+
+    dispatch({type: FETCH_ALL_DATA_BEGIN, payload: true});
+
+    Promise.all([
       dispatch(fetchHourlyForecast(cityId)),
       dispatch(fetch5DaysForecast(cityId)),
       dispatch(fetchCurrentForecast(cityId))
-    ])
+    ]).then(() => {
+      dispatch({type: FETCH_ALL_DATA_SUCCESS, payload: false});
+    }).catch(() => {
+      dispatch({type: FETCH_ALL_DATA_ERROR, payload: false});
+    })
   }
 }
+
 
 export function fetchCurrentForecast (cityId) {
   const request = axios.get(`${ROOT_URL}/currentconditions/v1/${cityId}?${API_KEY}&${DETAILS}`);

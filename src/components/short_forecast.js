@@ -5,7 +5,7 @@ import  { getIconData } from '../helpers/icons';
 import Ionicon from 'react-ionicons';
 import _ from 'lodash';
 import { withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 class ShortForecast extends Component {
   render() {

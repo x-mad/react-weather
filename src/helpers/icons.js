@@ -86,5 +86,7 @@ export function  getIconData(iconIndex) {
     case 36:
     case 38:
       return icons.nightcloudy;
+    default:
+      return '';
   }
 }

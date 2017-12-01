@@ -11,6 +11,8 @@ export default store => next => action => {
     case FETCH_FORECASTS:
       action.payload.data = action.payload.data.DailyForecasts.map(mapForecastsData);
       break;
+    default:
+      break;
   }
   return next(action);
 };

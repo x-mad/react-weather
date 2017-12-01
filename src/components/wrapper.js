@@ -25,13 +25,17 @@ class Wrapper extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-   if (nextProps.currentCity.Key !== this.props.currentCity.Key) {
-     this.stopPoll();
-   }
+    this.stopPoll();
+
+    if (nextProps.currentCity.Key !== this.props.currentCity.Key) {
+      this.updateData(nextProps);
+    } else if (!nextProps.isFetching) {
+      this.startPoll();
+    }
   }
 
   componentDidMount () {
-    this.startPoll();
+    this.updateData(this.props);
   }
   componentWillUnmount() {
     this.stopPoll();
@@ -43,19 +47,17 @@ class Wrapper extends Component {
   }
 
   startPoll () {
-    this.updateData().then(() => {
-      this.pid = setTimeout(() => {this.startPoll();}, 10000);
-    })
+      this.pid = setTimeout(() => {this.updateData(this.props)}, 10000);
   }
 
-  updateData () {
-    const {currentForecast, currentCity:{Key: cityId}} = this.props;
+  updateData (props) {
+    const {currentCity:{Key: cityId}} = props;
 
     return this.props.fetchAllData(cityId);
   }
 }
-function mapStateToProps({currentForecast, currentCity}){
-  return {currentForecast, currentCity};
+function mapStateToProps({isFetching, currentCity}){
+  return {isFetching, currentCity};
 }
 
 export default connect(mapStateToProps, { fetchAllData })(Wrapper);

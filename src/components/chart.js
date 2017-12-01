@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Chart, Line} from 'react-chartjs-2';
+import {Line} from 'react-chartjs-2';
 import {asCelsius} from '../helpers';
 
 export default class extends Component {
