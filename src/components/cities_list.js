@@ -26,11 +26,13 @@ class CitiesList extends Component {
   }
   
   renderCities() {
-    const {topCities} = this.props;
+    const {locationCity, topCities} = this.props;
+    const cities = [locationCity, ...topCities];
 
-    return topCities.map((city)=>{
+    return cities.map((city, index)=>{
+      const cls = (index === 0 ? 'geolocation-city' : '') + ' city';
       return (
-        <div className="city"
+        <div className={cls}
              key={city.Key}
              onClick={()=> this.setCurrentCity(city)}
         >{city.LocalizedName}</div>
@@ -43,8 +45,8 @@ class CitiesList extends Component {
   }
 }
 
-function mapStateToProps({topCities,currentCity}){
-  return {topCities,currentCity};
+function mapStateToProps({topCities,locationCity}){
+  return {topCities,locationCity};
 }
 
 export default connect(mapStateToProps, {fetchTopCities, setCurrentCity})(CitiesList);

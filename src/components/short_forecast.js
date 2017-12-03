@@ -21,7 +21,7 @@ class ShortForecast extends Component {
   }
   onPeriodForecastClick() {
     const {history, currentCity} = this.props;
-    history.push(`/period_forecast/${currentCity.key}`);
+    history.push(`/period_forecast/${currentCity.Key}`);
   }
 
   render3DayForecast() {

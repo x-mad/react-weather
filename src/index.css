@@ -247,13 +247,16 @@ html, body, #root {
 }
 .top-cities {
   background-color: #f4f5f6;
-  height:100%;
+  height:100vh;
 }
 .top-cities .list {
   padding: 10px;
 }
 .top-cities .list .title {
   margin: 10px 5px;
+}
+.top-cities .list .city.geolocation-city {
+  color: #579dd9;
 }
 .top-cities .list .city {
   font-size: 12px;

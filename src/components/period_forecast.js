@@ -41,7 +41,7 @@ class PeriodForecast extends Component {
       let chart = '';
 
       if(isFirstCol){
-        chart = <Chart temperatures={[10,20,30,40]} labels={['s','f','sa','gg']}/>;
+        chart = ''; //<Chart temperatures={[10,20,30,40]} labels={['s','f','sa','gg']}/>;
       }
       isFirstCol = false;
 

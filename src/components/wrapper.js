@@ -1,21 +1,21 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { fetchAllData } from '../actions'
+import { fetchAllData, initializeCity, setCurrentCity } from '../actions'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Main from './main';
 import PeriodForecast from './period_forecast';
 import CitiesList from './cities_list';
 
+const POLLER_TIMEOUT = 30000; //ms
 
 class Wrapper extends Component {
-
-
+  
   render () {
     return (
       <div className="wrapper">
         <BrowserRouter>
           <Switch>
-            <Route path="/period_forecast/:cityId" component={PeriodForecast}/>
+            <Route path="/period_forecast" component={PeriodForecast}/>
             <Route path="/cities_list" component={CitiesList}/>
             <Route path="/" component={Main}/>
           </Switch>
@@ -35,7 +35,9 @@ class Wrapper extends Component {
   }
 
   componentDidMount () {
-    this.updateData(this.props);
+    const {props} = this;
+
+    props.initializeCity();
   }
   componentWillUnmount() {
     this.stopPoll();
@@ -47,7 +49,7 @@ class Wrapper extends Component {
   }
 
   startPoll () {
-      this.pid = setTimeout(() => {this.updateData(this.props)}, 10000);
+      this.pid = setTimeout(() => {this.updateData(this.props)}, POLLER_TIMEOUT);
   }
 
   updateData (props) {
@@ -60,4 +62,4 @@ function mapStateToProps({isFetching, currentCity}){
   return {isFetching, currentCity};
 }
 
-export default connect(mapStateToProps, { fetchAllData })(Wrapper);
+export default connect(mapStateToProps, { fetchAllData, initializeCity, setCurrentCity })(Wrapper);
