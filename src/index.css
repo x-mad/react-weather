@@ -289,3 +289,35 @@ html, body, #root {
   position: absolute;
   padding: 9px 5px;
 }
+
+.top-cities .autocomplete {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background-color: #f4f5f6;
+  display: none;
+}
+.top-cities .autocomplete .autocomplete-item-wrap {
+  background-color: white;
+}
+
+.top-cities .autocomplete .autocomplete-item {
+  margin-left: 30px;
+  padding:  15px 15px 15px 0;
+  border-bottom: 1px solid #fbeaea;
+}
+
+.top-cities .autocomplete.visible {
+  height:calc(100% - 63px);
+  display: block;
+}
+
+.top-cities .autocomplete .no-results {
+  display: none
+}
+
+.top-cities .autocomplete.no-results .no-results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

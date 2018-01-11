@@ -12,7 +12,7 @@ class CitiesList extends Component {
 
     return (
       <div className="top-cities">
-        <SearchBar/>
+        <SearchBar onSetCurrentCity={this.setCurrentCity.bind(this)}/>
         <div className="list">
           <div className="title">Popular cities</div>
           {this.renderCities()}
@@ -24,7 +24,7 @@ class CitiesList extends Component {
   componentDidMount() {
     this.props.fetchTopCities();
   }
-  
+
   renderCities() {
     const {locationCity, topCities} = this.props;
     const cities = [locationCity, ...topCities];

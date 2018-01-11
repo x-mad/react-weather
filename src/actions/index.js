@@ -14,11 +14,12 @@ export const FETCH_ALL_DATA_ERROR = 'fetch_all_data_error';
 export const GET_LOCATION_CITY = 'get_location_city';
 export const FETCH_GEOPOSITION_CITY = 'fetch_geoposition_city';
 export const SET_LOCATION_CITY = 'set_location_city';
+export const FETCH_CITIES_AUTOCOMPLETE = 'fetch_cities_autocomplete';
 
 
 const ROOT_URL = 'http://dataservice.accuweather.com';
 const API_KEY = 'apikey=engGAPA64fX30ZJpmBAEgymHdKNUhnYs';
-//const API_KEY = 'apikey=iY4dryLknjqPgF0kmC4IaVbsduacsWCO';
+// const API_KEY = 'apikey=iY4dryLknjqPgF0kmC4IaVbsduacsWCO';
 const METRIC = 'metric=true';
 const DETAILS = 'details=true';
 
@@ -141,6 +142,15 @@ export function fetchHourlyForecast(cityId) {
 
   return {
     type:FETCH_HOURLY_FORECAST,
+    payload: request
+  }
+}
+
+export function fetchCitiesAutocomplete(query) {
+  const request = axios.get(`${ROOT_URL}/locations/v1/cities/autocomplete?q=${query}&${API_KEY}`);
+
+  return {
+    type: FETCH_CITIES_AUTOCOMPLETE,
     payload: request
   }
 }

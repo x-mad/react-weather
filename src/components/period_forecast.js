@@ -6,7 +6,7 @@ import { roundTemperature, dayName, shortDate } from '../helpers';
 import  { getIconData } from '../helpers/icons';
 import {Line} from 'react-chartjs-2';
 import classNames from 'classnames';
-import Chart from './chart.js';
+// import Chart from './chart.js';
 
 class PeriodForecast extends Component {
   
